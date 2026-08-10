@@ -326,3 +326,16 @@ musicPreview.addEventListener("timeupdate", function () {
     formatTime(musicPreview.currentTime);
 
 });
+document.querySelectorAll(".project-open").forEach(function (button) {
+
+  button.addEventListener("click", function (event) {
+
+    event.stopPropagation();
+
+    const project = button.closest(".project");
+
+    project.classList.add("expand-open");
+
+  });
+
+});
