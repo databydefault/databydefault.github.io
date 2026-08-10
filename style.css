@@ -1812,15 +1812,21 @@ button {
 #currently {
   padding-top: 40px !important;
 }
+/* =========================================
+   PROJECT OPEN BUTTON — FINAL POSITIONING
+   ========================================= */
 
-/* =========================================================
-   PROJECT OPEN BUTTON — FIX
-========================================================= */
+.project-image {
+  position: relative !important;
+}
 
 .project-image .project-open {
   position: absolute !important;
+
   top: 24px !important;
   right: 24px !important;
+  left: auto !important;
+  bottom: auto !important;
 
   width: 72px !important;
   height: 72px !important;
@@ -1838,15 +1844,12 @@ button {
   color: var(--ink) !important;
 
   cursor: pointer;
-
   z-index: 20 !important;
 
   transform: none !important;
 }
 
-
-/* Prevent the existing project-image span styling
-   from affecting the arrow */
+/* Arrow inside button */
 
 .project-image .project-open span {
   position: static !important;
@@ -1868,7 +1871,6 @@ button {
   transform: translateX(-3px) !important;
 }
 
-
 /* Hover */
 
 .project-image .project-open:hover {
@@ -1878,7 +1880,6 @@ button {
 .project-image .project-open:hover span {
   transform: translateX(4px) !important;
 }
-
 
 /* Mobile */
 
@@ -1896,8 +1897,4 @@ button {
     font-size: 34px !important;
   }
 
-}
-/* Make project image the positioning reference */
-.project-image {
-  position: relative !important;
 }
