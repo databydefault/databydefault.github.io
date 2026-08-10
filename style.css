@@ -1587,9 +1587,9 @@ button {
     gap: 8px;
   }
 
-  .resume {
-    display: none;
-  }
+.resume {
+  display: inline-block;
+}
 
   .hero {
     grid-template-columns: 1fr;
@@ -1885,16 +1885,10 @@ button {
 
 @media (max-width: 800px) {
 
-  .project-image .project-open {
-    top: 18px !important;
-    right: 18px !important;
-
-    width: 58px !important;
-    height: 58px !important;
-  }
-
-  .project-image .project-open span {
-    font-size: 34px !important;
+  .resume {
+    display: inline-block;
+    padding: 6px 9px;
+    font-size: 8px;
   }
 
 }
