@@ -1814,83 +1814,86 @@ button {
 }
 
 /* =========================================================
-   PROJECT OPEN BUTTON
+   PROJECT OPEN BUTTON — FIX
 ========================================================= */
 
-.project-open {
-  position: absolute;
+.project-image .project-open {
+  position: absolute !important;
+  top: 24px !important;
+  right: 24px !important;
 
-  top: 24px;
-  right: 24px;
+  width: 72px !important;
+  height: 72px !important;
 
-  width: 72px;
-  height: 72px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0 !important;
+  margin: 0 !important;
 
-  border: 1px solid var(--ink);
-  background: rgba(244, 243, 235, 0.08);
+  border: 1px solid var(--ink) !important;
+  background: rgba(244, 243, 235, 0.75) !important;
 
-  color: var(--ink);
+  color: var(--ink) !important;
 
   cursor: pointer;
 
-  z-index: 5;
+  z-index: 20 !important;
 
-  transition:
-    background .3s ease,
-    transform .35s cubic-bezier(.22, 1, .36, 1);
+  transform: none !important;
 }
 
 
-/* Arrow */
+/* Prevent the existing project-image span styling
+   from affecting the arrow */
 
-.project-open span {
-  display: block;
+.project-image .project-open span {
+  position: static !important;
 
-  font-family: Arial, sans-serif;
-  font-size: 42px;
-  font-weight: 300;
+  width: auto !important;
+  height: auto !important;
 
-  line-height: 1;
+  margin: 0 !important;
+  padding: 0 !important;
 
-  transform: translateX(-3px);
+  font-family: Arial, sans-serif !important;
+  font-size: 42px !important;
+  font-weight: 300 !important;
 
-  transition:
-    transform .35s cubic-bezier(.22, 1, .36, 1);
+  line-height: 1 !important;
+
+  color: var(--ink) !important;
+
+  transform: translateX(-3px) !important;
 }
 
 
 /* Hover */
 
-.project-open:hover {
-  background: rgba(244, 243, 235, 0.75);
+.project-image .project-open:hover {
+  background: rgba(244, 243, 235, 1) !important;
+}
 
-  transform: scale(1.04);
+.project-image .project-open:hover span {
+  transform: translateX(4px) !important;
 }
 
 
-.project-open:hover span {
-  transform: translateX(4px);
-}
-
-
-/* Keep button visible on mobile */
+/* Mobile */
 
 @media (max-width: 800px) {
 
-  .project-open {
-    top: 18px;
-    right: 18px;
+  .project-image .project-open {
+    top: 18px !important;
+    right: 18px !important;
 
-    width: 58px;
-    height: 58px;
+    width: 58px !important;
+    height: 58px !important;
   }
 
-  .project-open span {
-    font-size: 34px;
+  .project-image .project-open span {
+    font-size: 34px !important;
   }
 
 }
