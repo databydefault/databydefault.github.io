@@ -142,15 +142,19 @@ const expandableProjects =
 
 expandableProjects.forEach(project => {
 
-  const resetButton =
-    project.querySelector(".project-reset");
+const resetButton =
+  project.querySelector(".project-reset");
 
-  project.addEventListener("click", function () {
+const openButton =
+  project.querySelector(".project-open");
 
-    project.classList.add("expand-open");
+openButton.addEventListener("click", function (event) {
 
-  });
+  event.stopPropagation();
 
+  project.classList.add("expand-open");
+
+});
 
   resetButton.addEventListener("click", function (event) {
 
@@ -324,18 +328,5 @@ musicPreview.addEventListener("timeupdate", function () {
 
   musicCurrent.textContent =
     formatTime(musicPreview.currentTime);
-
-});
-document.querySelectorAll(".project-open").forEach(function (button) {
-
-  button.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-
-    const project = button.closest(".project");
-
-    project.classList.add("expand-open");
-
-  });
 
 });
