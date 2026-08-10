@@ -1812,3 +1812,85 @@ button {
 #currently {
   padding-top: 40px !important;
 }
+
+/* =========================================================
+   PROJECT OPEN BUTTON
+========================================================= */
+
+.project-open {
+  position: absolute;
+
+  top: 24px;
+  right: 24px;
+
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--ink);
+  background: rgba(244, 243, 235, 0.08);
+
+  color: var(--ink);
+
+  cursor: pointer;
+
+  z-index: 5;
+
+  transition:
+    background .3s ease,
+    transform .35s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* Arrow */
+
+.project-open span {
+  display: block;
+
+  font-family: Arial, sans-serif;
+  font-size: 42px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  transform: translateX(-3px);
+
+  transition:
+    transform .35s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* Hover */
+
+.project-open:hover {
+  background: rgba(244, 243, 235, 0.75);
+
+  transform: scale(1.04);
+}
+
+
+.project-open:hover span {
+  transform: translateX(4px);
+}
+
+
+/* Keep button visible on mobile */
+
+@media (max-width: 800px) {
+
+  .project-open {
+    top: 18px;
+    right: 18px;
+
+    width: 58px;
+    height: 58px;
+  }
+
+  .project-open span {
+    font-size: 34px;
+  }
+
+}
