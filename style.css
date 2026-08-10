@@ -1897,3 +1897,7 @@ button {
   }
 
 }
+/* Make project image the positioning reference */
+.project-image {
+  position: relative !important;
+}
