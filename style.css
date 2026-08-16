@@ -4,23 +4,61 @@
 ========================================================= */
 
 :root {
-  --bg: #eeeee3;
-  --ink: #111814;
-  --muted: #5e665b;
-  --line: #171b17;
-  --accent: #ad382c;
 
-  --font-display: "Overpass", Georgia, serif;
-  --font-body: "Overpass", Arial, sans-serif;
-  --font-mono: "DM Mono", monospace;
+  --bg: #FFFCFF;
+
+  --bg-alt: #F3F0EC;
+
+  --paper-line: #171717;
+
+  --ink: #0B1110;
+
+  --ink-soft: #5F6865;
+
+  --accent: #659BB9;
+
+  --accent-soft: rgba(101, 155, 185, 0.10);
+
+  --verified: #659BB9;
+
+  --verified-soft: rgba(101, 155, 185, 0.12);
+
+  --font-display: 'Overpass', serif;
+
+  --font-body: 'Overpass', sans-serif;
+
+  --font-mono: 'DM Mono', monospace;
+
+  color-scheme: light;
+
+  --line: var(--paper-line);
+
 }
 
 body.dark {
-  --bg: #151714;
-  --ink: #e9ebe2;
-  --muted: #9da398;
-  --line: #d9ddd3;
-  --accent: #d05a4a;
+
+  --bg: #111111;
+
+  --bg-alt: #181818;
+
+  --paper-line: #555555;
+
+  --ink: #FFFCFF;
+
+  --ink-soft: #B8B8B8;
+
+  --accent: #659BB9;
+
+  --accent-soft: rgba(101, 155, 185, 0.16);
+
+  --verified: #659BB9;
+
+  --verified-soft: rgba(101, 155, 185, 0.16);
+
+  color-scheme: dark;
+
+  --line: var(--paper-line);
+
 }
 
 
@@ -1891,4 +1929,43 @@ button {
     font-size: 8px;
   }
 
+}
+/* =========================================================
+   PROJECT EXPANDED — TEXT FIX
+========================================================= */
+
+.project-expanded {
+  color: #0B1110 !important;
+}
+
+.project-expanded h2 {
+  color: #0B1110 !important;
+}
+
+.project-expanded .expanded-description {
+  color: #5F6865 !important;
+}
+
+.project-expanded .expanded-meta {
+  color: #0B1110 !important;
+}
+
+.project-expanded .expanded-meta span {
+  color: #5F6865 !important;
+}
+
+.project-expanded .expanded-meta strong {
+  color: #0B1110 !important;
+}
+
+.project-expanded .eyebrow {
+  color: #5F6865 !important;
+}
+
+.project-expanded .project-reset {
+  color: #0B1110 !important;
+}
+
+.project-expanded .project-reset span {
+  border-color: #0B1110 !important;
 }
