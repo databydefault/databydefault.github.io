@@ -734,7 +734,7 @@ main {
       rgba(244, 243, 235, .82),
       rgba(244, 243, 235, .82)
     ),
-    url("project-backgrounds.png");
+    url("nfs-background.png");
 
   background-size: 200% 200%;
   background-position: 0% 0%;
@@ -747,7 +747,7 @@ main {
       rgba(244, 243, 235, .82),
       rgba(244, 243, 235, .82)
     ),
-    url("project-backgrounds.png");
+    url("nfs-background.png");
 
   background-size: 200% 200%;
   background-position: 100% 0%;
@@ -760,7 +760,7 @@ main {
       rgba(244, 243, 235, .82),
       rgba(244, 243, 235, .82)
     ),
-    url("project-backgrounds.png");
+    url("nfs-background.png");
 
   background-size: 200% 200%;
   background-position: 0% 100%;
@@ -773,7 +773,7 @@ main {
       rgba(244, 243, 235, .82),
       rgba(244, 243, 235, .82)
     ),
-    url("project-backgrounds.png");
+    url("nfs-background.png");
 
   background-size: 200% 200%;
   background-position: 100% 100%;
@@ -1102,7 +1102,7 @@ main {
 
 .currently-section {
   margin: 0;
-  padding: 20px 32px 90px;
+  padding: 20px 20px 25px;
 }
 
 .currently-section .section-title {
@@ -1797,58 +1797,68 @@ button {
   }
 }
 /* =========================================================
-   CURRENTLY HAPPENING — FORCE POSITION
+   CURRENTLY HAPPENING — GAP FIX
 ========================================================= */
 
+/* Remove inherited section spacing */
+#currently,
 .currently-section {
   position: relative !important;
 
   display: block !important;
 
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+  width: 100% !important;
 
-  padding-top: 20px !important;
-  padding-bottom: 90px !important;
+  margin: 0 !important;
 
-  height: auto !important;
+  padding: 20px 20px 30px !important;
+
   min-height: 0 !important;
-}
-/* Remove inherited spacing from the section immediately before Currently */
+  height: auto !important;
 
-.currently-section {
-  clear: both;
+  clear: both !important;
 }
 
+/* Title */
+#currently .section-title,
+.currently-section .section-title {
+  margin: 0 !important;
+  padding-bottom: 8px !important;
+}
+
+/* Currently cards */
+#currently .currently-grid,
+.currently-section .currently-grid {
+  margin: 0 !important;
+}
+
+/* Remove extra space AFTER Currently Happening */
+#currently + *,
 .currently-section + * {
-  margin-top: 0;
+  margin-top: 0 !important;
 }
+
+/* Contact starts immediately after Currently Happening */
+.contact-section {
+  margin-top: 0 !important;
+  padding-top: 40px !important;
+}
+
 /* =========================================================
-   CURRENTLY HAPPENING — GAP FIX
+   MOBILE
 ========================================================= */
 
-#currently {
-  display: block;
-  margin: 0 !important;
-  padding-top: 20px !important;
-  padding-bottom: 90px !important;
-  min-height: 0 !important;
-  height: auto !important;
-}
+@media (max-width: 800px) {
 
-#currently .section-title {
-  margin-top: 0 !important;
-}
-#publications {
-  margin-bottom: 0 !important;
-  padding-bottom: 20px !important;
-}
-#publications {
-  padding-bottom: 40px !important;
-}
+  #currently,
+  .currently-section {
+    padding: 20px 20px 30px !important;
+  }
 
-#currently {
-  padding-top: 40px !important;
+  .contact-section {
+    padding-top: 40px !important;
+  }
+
 }
 /* =========================================
    PROJECT OPEN BUTTON — FINAL POSITIONING
@@ -1968,4 +1978,247 @@ button {
 
 .project-expanded .project-reset span {
   border-color: #0B1110 !important;
+}
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-section {
+  padding: 100px 32px;
+  border-top: 1px solid var(--line);
+}
+
+.contact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  padding-bottom: 12px;
+
+  border-bottom: 1px solid var(--line);
+
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+}
+
+.contact-header .eyebrow {
+  margin: 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 45% 55%;
+
+  min-height: 620px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-intro {
+  padding: 70px 40px 70px 0;
+
+  border-right: 1px solid var(--line);
+}
+
+.contact-intro h2 {
+  margin: 0;
+
+  font-family: var(--font-display);
+
+  font-size: clamp(80px, 11vw, 180px);
+
+  font-weight: 400;
+  line-height: .78;
+
+  letter-spacing: -.055em;
+}
+
+.contact-intro p {
+  max-width: 420px;
+
+  margin: 50px 0 25px;
+
+  font-size: 17px;
+  line-height: 1.5;
+
+  color: var(--muted);
+}
+
+.contact-email {
+  display: inline-block;
+
+  color: var(--ink);
+
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid var(--ink);
+
+  padding-bottom: 4px;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 22px;
+}
+
+.contact-form {
+  padding: 70px 0 70px 50px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 34px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.form-field label {
+  font-family: var(--font-mono);
+
+  font-size: 9px;
+
+  letter-spacing: .12em;
+
+  color: var(--muted);
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 14px 0;
+
+  border: 0;
+
+  border-bottom: 1px solid var(--line);
+
+  background: transparent;
+
+  color: var(--ink);
+
+  font-family: var(--font-body);
+
+  font-size: 16px;
+
+  outline: none;
+
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--muted);
+
+  opacity: .65;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-bottom-color: var(--accent);
+}
+
+.contact-submit {
+  align-self: flex-start;
+
+  padding: 16px 22px;
+
+  border: 1px solid var(--ink);
+
+  background: var(--ink);
+
+  color: var(--bg);
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  letter-spacing: .1em;
+
+  cursor: pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+.contact-submit:hover {
+  background: var(--accent);
+
+  border-color: var(--accent);
+
+  color: #FFFCFF;
+
+  transform: translateY(-2px);
+}
+
+.contact-submit:disabled {
+  opacity: .5;
+  cursor: default;
+  transform: none;
+}
+
+.contact-status {
+  margin: 0;
+
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+
+  color: var(--ink-soft);
+}
+
+.contact-status.is-success {
+  color: var(--accent);
+}
+
+.contact-status.is-error {
+  color: #B84A3E;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+ .contact-section {
+  padding: 45px 32px 80px;
+}
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-intro {
+    padding: 60px 0;
+
+    border-right: 0;
+
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-intro h2 {
+    font-size: 28vw;
+  }
+
+  .contact-form {
+    padding: 50px 0;
+  }
+
+}
+.contact-section {
+  --contact-blue: #014BAA;
 }
