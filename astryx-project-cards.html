@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en" data-astryx-theme="neutral">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F8F3F0">
+  <title>Project Cards — Astryx Preview | Data by Default</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@astryxdesign/core@0.4.1/src/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@astryxdesign/core@0.4.1/dist/astryx.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@astryxdesign/theme-neutral@0.4.1/dist/theme.css">
+
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@19.2.0",
+        "react/jsx-runtime": "https://esm.sh/react@19.2.0/jsx-runtime",
+        "react-dom": "https://esm.sh/react-dom@19.2.0",
+        "react-dom/client": "https://esm.sh/react-dom@19.2.0/client",
+        "@astryxdesign/core": "https://esm.sh/@astryxdesign/core@0.4.1?external=react,react-dom"
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #F8F3F0;
+      --card-paper: #FFFCF9;
+      --ink: #0B1110;
+      --muted: #5F6865;
+      --line: rgba(11, 17, 16, .17);
+      --blue: #014BAA;
+      --mono: "DM Mono", monospace;
+      --sans: "Inter", sans-serif;
+      --serif: "Instrument Serif", Georgia, serif;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--paper); scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .page { width: min(1440px, 100%); margin: 0 auto; padding: 0 4.2vw 80px; }
+    .topbar { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border-bottom: 1px solid var(--line); font: 10px var(--mono); letter-spacing: .11em; text-transform: uppercase; }
+    .brand { font: 800 18px var(--sans); letter-spacing: -.08em; text-decoration: none; }
+    .topbar-note { color: var(--blue); }
+    .back-link { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+    .back-link:hover { color: var(--blue); border-color: var(--blue); }
+    .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 310px); align-items: end; gap: 36px; padding: clamp(70px, 10vw, 132px) 0 54px; }
+    .eyebrow { margin: 0 0 24px; color: var(--muted); font: 10px var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+    .hero h1 { max-width: 900px; margin: 0; font: 400 clamp(62px, 9.2vw, 132px)/.83 var(--serif); letter-spacing: -.055em; }
+    .hero h1 em { color: var(--blue); font-weight: 400; }
+    .hero-note { max-width: 310px; justify-self: end; margin: 0 0 5px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .hero-note strong { display: block; margin-bottom: 12px; color: var(--ink); font: 10px var(--mono); letter-spacing: .11em; text-transform: uppercase; }
+    .section-rule { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .section-rule span:last-child { color: var(--muted); }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding-top: 22px; }
+    .project-card-wrap { min-width: 0; }
+    .project-card { height: 100%; overflow: hidden; border: 1px solid var(--line) !important; border-radius: 3px !important; background: var(--card-paper) !important; box-shadow: none !important; transition: border-color .2s ease, transform .25s ease; }
+    .project-card:hover { border-color: rgba(1, 75, 170, .58) !important; transform: translateY(-3px); }
+    .project-card > div { height: 100%; }
+    .card-inner { display: flex; flex-direction: column; height: 100%; }
+    .project-art { position: relative; min-height: 258px; padding: 22px 24px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; isolation: isolate; }
+    .art-topline, .art-bottomline { display: flex; align-items: center; justify-content: space-between; gap: 12px; font: 9px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .art-topline { color: rgba(11, 17, 16, .66); }
+    .art-bottomline { color: rgba(11, 17, 16, .72); }
+    .art-main { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .art-mark { color: var(--ink); font: 800 clamp(55px, 7.5vw, 100px)/.8 var(--sans); letter-spacing: -.105em; }
+    .art-side { width: 118px; display: grid; gap: 8px; font: 9px var(--mono); letter-spacing: .08em; text-align: right; text-transform: uppercase; color: rgba(11, 17, 16, .72); }
+    .art-bars { display: grid; gap: 6px; }
+    .art-bars i { display: block; height: 3px; margin-left: auto; background: var(--blue); }
+    .art-bars i:nth-child(1) { width: 100%; }
+    .art-bars i:nth-child(2) { width: 72%; opacity: .65; }
+    .art-bars i:nth-child(3) { width: 48%; opacity: .35; }
+    .art-nfs { background: radial-gradient(circle at 82% 48%, rgba(1,75,170,.18) 0 1px, transparent 2px) 0 0/17px 17px, linear-gradient(135deg, #E9E8E1, #DCE5E7); }
+    .art-nfs::before { content: ""; position: absolute; z-index: -1; width: 310px; height: 310px; right: -90px; top: -26px; border: 1px solid rgba(1,75,170,.24); border-radius: 50%; box-shadow: 0 0 0 28px rgba(1,75,170,.045), 0 0 0 58px rgba(1,75,170,.035); }
+    .art-gis { background: linear-gradient(rgba(11,17,16,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(11,17,16,.045) 1px, transparent 1px), #E6E8E0; background-size: 24px 24px; }
+    .art-gis::before { content: ""; position: absolute; z-index: -1; width: 360px; height: 280px; left: 24%; top: -20px; border: 1px solid rgba(1,75,170,.52); border-radius: 45% 55% 38% 62% / 51% 36% 64% 49%; transform: rotate(-19deg); box-shadow: 0 0 0 18px rgba(1,75,170,.05), 0 0 0 42px rgba(1,75,170,.04), 0 0 0 70px rgba(1,75,170,.035); }
+    .art-data { background: linear-gradient(135deg, #E8E2DB, #F0E8DE); }
+    .data-visual { height: 104px; display: flex; align-items: end; gap: 10px; position: absolute; right: 25px; bottom: 62px; opacity: .78; }
+    .data-visual i { display: block; width: 19px; background: var(--blue); opacity: .82; }
+    .data-visual i:nth-child(1) { height: 28%; }
+    .data-visual i:nth-child(2) { height: 57%; opacity: .65; }
+    .data-visual i:nth-child(3) { height: 42%; opacity: .5; }
+    .data-visual i:nth-child(4) { height: 88%; }
+    .data-visual i:nth-child(5) { height: 69%; opacity: .6; }
+    .data-visual i:nth-child(6) { height: 100%; }
+    .art-ai { background: radial-gradient(circle at 74% 38%, rgba(1,75,170,.16), transparent 34%), linear-gradient(135deg, #E2E6E7, #EAE5DE); }
+    .ai-orbit { position: absolute; z-index: -1; width: 240px; height: 150px; right: 8%; top: 48px; border: 1px solid rgba(1,75,170,.45); border-radius: 50%; transform: rotate(-27deg); }
+    .ai-orbit::before, .ai-orbit::after { content: ""; position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); }
+    .ai-orbit::before { top: 15px; left: 34px; }
+    .ai-orbit::after { right: 20px; bottom: 17px; }
+    .project-copy { display: flex; flex: 1; flex-direction: column; gap: 14px; padding: 25px 26px 24px; }
+    .project-meta, .project-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .project-index { color: var(--muted); font: 10px var(--mono); letter-spacing: .1em; }
+    .project-copy h3 { margin: 2px 0 0; color: var(--ink); font: 400 clamp(28px, 3.2vw, 42px)/.98 var(--serif); letter-spacing: -.025em; }
+    .project-summary { max-width: 510px; min-height: 48px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .project-footer { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); }
+    .project-focus { color: var(--muted); font: 9px/1.5 var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .project-card .astryx-badge { font-family: var(--mono); font-size: 9px; letter-spacing: .06em; text-transform: uppercase; }
+    .project-card .astryx-button { font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+    .detail-panel { margin-top: 26px; padding: 28px; border: 1px solid var(--blue); background: rgba(1,75,170,.035); }
+    .detail-panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+    .detail-panel h2 { margin: 4px 0 12px; font: 400 clamp(32px, 5vw, 58px)/.95 var(--serif); }
+    .detail-panel p { max-width: 740px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .detail-close { border: 0; background: transparent; color: var(--blue); font: 10px var(--mono); letter-spacing: .1em; cursor: pointer; }
+    .detail-close:hover { text-decoration: underline; }
+    .detail-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .footnote { display: flex; justify-content: space-between; gap: 18px; margin-top: 56px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    @media (max-width: 760px) { .page { padding-right: 20px; padding-left: 20px; } .hero { grid-template-columns: 1fr; gap: 28px; padding-top: 76px; } .hero-note { justify-self: start; } .project-grid { grid-template-columns: 1fr; } .project-art { min-height: 230px; } .art-mark { font-size: 76px; } .project-summary { min-height: 0; } .footnote { flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="./index.html">SV®</a>
+      <span class="topbar-note">Design exploration / 01</span>
+      <a class="back-link" href="./index.html">← Back to portfolio</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">DATA BY DEFAULT · SELECTED WORK</p>
+          <h1>Work in<br><em>systems.</em></h1>
+        </div>
+        <p class="hero-note">
+          <strong>Astryx × Data by Default</strong>
+          A project-card direction using Astryx components, adapted to the portfolio’s cream, ink and royal-blue palette. This is a separate visual experiment, not a replacement for the current site.
+        </p>
+      </section>
+
+      <div class="section-rule">
+        <span>01 — Selected projects</span>
+        <span>Four projects · 2026</span>
+      </div>
+
+      <div id="project-root">
+        <p style="font: 11px var(--mono); color: var(--muted); padding: 28px 0;">Loading Astryx preview…</p>
+      </div>
+    </main>
+
+    <footer class="footnote">
+      <span>SV® — Siddharth Verma</span>
+      <span>Prototype only · Main branch untouched</span>
+    </footer>
+  </div>
+
+  <script type="module">
+    import * as React from 'react';
+    import { createRoot } from 'react-dom/client';
+    import { Card, Heading, Text, Button, Badge } from '@astryxdesign/core';
+
+    const h = React.createElement;
+    const projects = [
+      { id: '01', short: 'NFS', title: 'NITI For States', category: 'Digital public infrastructure', year: '2026', art: 'nfs', artNote: 'Data / State / Insight', summary: 'A digital platform bringing together data, indicators, visualisations and analytical tools to support state-level decision-making.', focus: 'Data products · Policy · Product delivery', detail: 'Working across the NITI For States ecosystem: translating stakeholder requirements into product priorities, coordinating delivery, and supporting the Data, Explorer, State Profiles and AI Sarthi experiences.', tags: ['Data products', 'Digital transformation', 'Public sector'] },
+      { id: '02', short: 'GIS', title: 'Area Development Strategy Tool', category: 'Spatial decision support', year: '2026', art: 'gis', artNote: 'Place / Layer / Plan', summary: 'A geospatial planning platform connecting development indicators with spatial assets, GIS layers and visualisations.', focus: 'GIS · Spatial data · Visualisation', detail: 'Working on product definition, indicator and asset mapping, stakeholder coordination, and delivery of a GIS-based decision-support experience for area development planning.', tags: ['GIS', 'Spatial data', 'Planning'] },
+      { id: '03', short: 'DATA', title: 'Data Catalogues', category: 'Data discovery & curation', year: '2026', art: 'data', artNote: 'Metadata / Quality / Discovery', summary: 'A structured data-discovery initiative making datasets easier to find, understand, validate and use.', focus: 'Data QA · Metadata · Taxonomy', detail: 'Working on data curation, taxonomy, metadata standardisation and catalogue strategy to improve consistency, quality and discoverability across datasets.', tags: ['Data curation', 'Metadata', 'Discovery'] },
+      { id: '04', short: 'AI', title: 'AI Sarthi', category: 'AI-enabled knowledge access', year: '2026', art: 'ai', artNote: 'Ask / Explore / Understand', summary: 'An AI-powered interface designed to help users discover, navigate and understand information across the NITI For States ecosystem.', focus: 'AI · Knowledge systems · UX', detail: 'Working on product concept, user experience, knowledge architecture and AI adoption, shaping a more accessible way to interact with government data and knowledge.', tags: ['AI', 'Knowledge architecture', 'User experience'] }
+    ];
+
+    function Art({ project }) {
+      return h('div', { className: 'project-art art-' + project.art, 'aria-hidden': 'true' },
+        h('div', { className: 'art-topline' }, h('span', null, 'SV® / ' + project.id), h('span', null, project.category)),
+        h('div', { className: 'art-main' },
+          h('div', { className: 'art-mark' }, project.short),
+          project.art === 'data'
+            ? h('div', { className: 'data-visual' }, ...Array.from({ length: 6 }, (_, i) => h('i', { key: i })))
+            : project.art === 'ai'
+              ? h('div', { className: 'ai-orbit' })
+              : h('div', { className: 'art-side' }, h('span', null, project.artNote), h('div', { className: 'art-bars' }, h('i'), h('i'), h('i')))
+        ),
+        h('div', { className: 'art-bottomline' }, h('span', null, 'DATA / TECHNOLOGY / STRATEGY'), h('span', null, project.year))
+      );
+    }
+
+    function ProjectCard({ project, onSelect }) {
+      return h('article', { className: 'project-card-wrap' },
+        h(Card, { className: 'project-card', padding: 0, variant: 'default', elevation: 'none' },
+          h('div', { className: 'card-inner' },
+            h(Art, { project }),
+            h('div', { className: 'project-copy' },
+              h('div', { className: 'project-meta' },
+                h(Badge, { label: project.category, variant: 'blue' }),
+                h(Text, { type: 'code', color: 'secondary' }, project.id)
+              ),
+              h(Heading, { level: 3 }, project.title),
+              h(Text, { type: 'supporting', color: 'secondary' }, project.summary),
+              h('div', { className: 'project-footer' },
+                h('span', { className: 'project-focus' }, project.focus),
+                h(Button, { label: 'View details ↗', size: 'sm', variant: 'secondary', onClick: () => onSelect(project) })
+              )
+            )
+          )
+        )
+      );
+    }
+
+    function App() {
+      const [selected, setSelected] = React.useState(null);
+      return h(React.Fragment, null,
+        h('section', { className: 'project-grid', 'aria-label': 'Selected projects' },
+          ...projects.map(project => h(ProjectCard, { key: project.id, project, onSelect: setSelected }))
+        ),
+        selected ? h('section', { className: 'detail-panel', 'aria-live': 'polite', 'aria-label': selected.title + ' details' },
+          h('div', { className: 'detail-panel-head' },
+            h('div', null,
+              h('p', { className: 'eyebrow' }, 'PROJECT ' + selected.id + ' · ' + selected.year),
+              h('h2', null, selected.title),
+              h('p', null, selected.detail)
+            ),
+            h('button', { className: 'detail-close', type: 'button', onClick: () => setSelected(null), 'aria-label': 'Close project details' }, 'CLOSE ×')
+          ),
+          h('div', { className: 'detail-tags' }, ...selected.tags.map(tag => h(Badge, { key: tag, label: tag, variant: 'neutral' })))
+        ) : null
+      );
+    }
+
+    createRoot(document.getElementById('project-root')).render(h(App));
+  </script>
+</body>
+</html>
